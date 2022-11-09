@@ -1,5 +1,8 @@
-function playGame(playerInput){clearMessages()
-    function getMoveName(argMoveId){
+{
+
+const playGame = function(playerChoise){clearMessages()
+    
+    const getMoveName = function(argMoveId){
         if(argMoveId == 1){
         return 'kamień';
         } else if(argMoveId == 2){
@@ -11,19 +14,18 @@ function playGame(playerInput){clearMessages()
             return 'nieznany ruch';
         }
     }
+    const argPlayerMove = getMoveName(playerChoise);
+    const randomNumber = Math.floor(Math.random() * 3 + 1);
+    const argComputerMove = getMoveName(randomNumber);
 
-    console.log('Gracz wpisał: ' + playerInput);
-    let argPlayerMove = getMoveName(playerInput);
+    console.log('Gracz wpisał: ' + playerChoise);
     printMessage('Twój ruch to: ' + argPlayerMove);
+  
+    console.log('Wylosowana liczba to: ' + randomNumber);  
+    printMessage('Mój ruch to: ' + argComputerMove); 
 
-    let randomNumber = Math.floor(Math.random() * 3 + 1);
-    console.log('Wylosowana liczba to: ' + randomNumber);
-    let argComputerMove = getMoveName(randomNumber);
-    printMessage('Mój ruch to: ' + argComputerMove);
-
-    console.log('moves:', argComputerMove, argPlayerMove);
-
-    function displayResult(argComputerMove, argPlayerMove){
+    
+    const displayResult = function(argComputerMove, argPlayerMove){
         if(argComputerMove == 'kamień' && argPlayerMove == 'papier'){
             printMessage('Ty wygrywasz!');
         } else if(argComputerMove == 'papier' && argPlayerMove == 'nożyce'){
@@ -46,6 +48,8 @@ function playGame(playerInput){clearMessages()
             printMessage('Wybrałeś złą liczbę - wpisz poprawną');
         }
     }
+    console.log('Ruchy: Twój - ' + argComputerMove, ', Komputer - ' + argPlayerMove);
+    
     displayResult(argComputerMove, argPlayerMove);
 }
 
@@ -60,3 +64,5 @@ document.getElementById('play-paper').addEventListener('click', function(){
 document.getElementById('play-scissors').addEventListener('click', function(){
     playGame('3');
 });
+
+}
